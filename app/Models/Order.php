@@ -7,6 +7,14 @@ use Ramsey\Uuid\Uuid;
 
 class Order extends Model
 {
+    const TYPE_NORMAL = 'normal';
+    const TYPE_CROWDFUNDING = 'crowdfunding';
+
+    public static $typeMap = [
+        self::TYPE_NORMAL => '普通商品订单',
+        self::TYPE_CROWDFUNDING => '众筹商品订单',
+    ];
+
     const REFUND_STATUS_PENDING = 'pending';
     const REFUND_STATUS_APPLIED = 'applied';
     const REFUND_STATUS_PROCESSING = 'processing';
@@ -46,6 +54,7 @@ class Order extends Model
         'ship_status',
         'ship_data',
         'extra',
+        'type'
     ];
 
     protected $casts = [

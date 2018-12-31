@@ -63,6 +63,7 @@ class PaymentController extends Controller
     {
         // 校验输入参数
         $data  = app('alipay')->verify();
+        file_put_contents('1.txt',json_encode($data));
         // 如果订单状态不是成功或者结束，则不走后续的逻辑
         // 所有校验状态：https://docs.open.alipay.com/59/103672
         if(!in_array($data->trade_status, ['TRADE_SUCCESS', 'TRADE_FINISHED'])) {
